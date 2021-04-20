@@ -36,3 +36,4 @@ Select source path which take photos with GPS information. Than select target pa
 # ToDo
  - Generate KML file
  - Adjust time
+ - Set position manually
