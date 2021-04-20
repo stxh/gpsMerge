@@ -1,7 +1,26 @@
-# coding: utf-8
-'''
-Merger gps information from phone photos to camera's
-'''
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+###############################################################################
+#
+# Developer:    StXh <stxh007@gmail.com>
+# 
+# This application is released under the GPL license version 2
+#
+# More informations and help can be found here: https://github.com/stxh/gpsMerge
+#
+################################################################################
+
+"""
+Merger gps information from phone photos to camera photos
+Free Software tool to geolocalize informations from:
+ - phone photos or other photos which have GPS exif
+
+Let camera photos sync latitude/longitude informations in their EXIF GPS section
+More informations look at:
+https://github.com/stxh/gpsMerge
+"""
+
 
 import os
 import piexif
