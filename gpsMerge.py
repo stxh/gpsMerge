@@ -7,6 +7,7 @@ import os
 import piexif
 from datetime import datetime
 
+# generator of image files
 def getFileList(dir):
     for fileName in sorted(os.listdir ( dir )):
         _, ext = os.path.splitext(fileName)
@@ -28,7 +29,7 @@ def getGpx(dir):
     return gpx
 
 # insert gps exif
-def setGps(dir, gpx):
+def setGps(dir, gpx, force=False):
     gpxkeys = sorted(gpx)   # for performance
     for name, fileName in getFileList(dir):
         exif_dict = piexif.load(fileName)
@@ -36,7 +37,7 @@ def setGps(dir, gpx):
         dt = datetime.strptime(dt.decode('utf-8'), '%Y:%m:%d %H:%M:%S')
         dt = int(dt.timestamp())
         gps = exif_dict["GPS"]
-        if not gps and dt:
+        if dt and (not gps or force):
             gps = getGpxGps(dt, gpxkeys, gpx)
             exif_dict["GPS"] = gps
             exif_bytes = piexif.dump(exif_dict)
